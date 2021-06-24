@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_workspace_file>
+  <Workspace title="Workspace">
+    <Project filename="solve_rbf/solve_rbf.cbp" />
+    <Project filename="apply_rbf/apply_rbf.cbp" />
+  </Workspace>
+</CodeBlocks_workspace_file>

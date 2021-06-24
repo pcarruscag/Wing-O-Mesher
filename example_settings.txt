@@ -1,0 +1,84 @@
+%% GEOMETRY %%
+
+% 2 or 3D, with or without solid mesh
+data.nDim = 3;   data.fsi = true;
+
+% Airfoil characterists (NACA 4 digits)
+data.m = 0;   data.p = 4;    data.t = 12;
+% Domain size for O-Mesh (normalized by chord) and chord
+data.L = 4;   data.chord = 0.25;
+% Target far field distance (normalized by chord)
+data.targetFar = 4;  data.farAR = 4.0;  data.nearAR = 2.0;  data.rate = 1.3;
+
+% 3D geometry parameters
+% Span (norm. by chord) and half sphere (3D domain) radius (norm. by span)
+data.Lz = 4;   data.Rsph = 10;
+% Aspect ratio and expansion rate for the sphere extrusion
+data.sphAR = 2.0;  data.sphRate = 1.25;
+% Sweep angle and taper fraction
+data.sweep = 5;  data.taper = 0.7;  data.thinning = 1.0;
+% Twist at wing tip (linear distribution)
+data.twist = -2*pi/180;
+% Apply an external deformation (read from folder external_deformation)
+data.extDef = false;
+
+%% MESH SIZE %%
+
+% Number of grid points in qsi and eta direction
+data.N = 104;  data.M = 18;
+% Parameters for mesh attraction
+data.a = 200;  data.c = 0.6;
+% Inflation layer control
+data.firstLayer = 1.7e-5;  data.numOrthog = 18;
+% Refinement factor
+data.refineFactor = 1;
+% Wake refinement
+data.teCoarsening = 0.98;
+data.wake = 0;  data.wakeCluster = 0.6;  data.wakeUpDown = false;
+
+% 3D size parameters
+% Number of sections along span, tip size parameter, and type (sin, tanh)
+data.Nz = 70;
+data.tipFactor = 2.4;  data.tipType = 'tanh';
+data.rootFactor = 0.25;
+% Smooth the wing tip corner to avoid 45deg cells
+data.smoothTip = true;
+% Decrease of cylinder radius over span (on last radial section)
+data.dR = 0.1;
+% Decrease of span over cylinder radius (on last spanwise section)
+data.dL = 0.1;
+% Number of (boundary) layers closed over the wing tip (45 degree zone)
+data.BL = 19;
+% Factor controlling how the airfoil tip is projected onto the sphere
+data.projFactor = 0.7;
+% Angle where a semi circle is split into two blocks of quad elements
+data.refAngle = pi*36/180;
+% Number of thickness-wise elements for the two major quad sections of the tip
+data.nTh1 = 11;   data.nTh2 = 9;
+
+% 2D solid mesh parameters
+% Split surfaces for FSI
+data.splitSurfaceAt = 0;
+% Structural mesh sizing
+data.factorM = 1.0;  data.factorN = 1.2;
+data.refineFactorS = 1;
+% Structural mesh around LE (0 for off)
+data.leLayers = 2;  data.leLayerThin = [0.9 0.5];
+
+% 3D solid mesh parameters
+% Matching mesh
+data.match = true;
+% Aspect ratio of elements relative to average thickness-wise size
+data.arRoot = 3.0;  data.arTip = 2.0;
+
+% FSI interface settings
+data.maxInterfacePts = 5000;
+
+%% METHOD SETTINGS %%
+
+% Mesher convergence criteria and relaxation
+data.maxIters = 200;   data.tolerance = 1e-6;
+data.ri = 0.2;   data.rf = 0.6;   data.kf = 30;
+% Linear solver parameters
+data.linSolMaxIters  = 100;
+data.linSolTolerance = 1e-6;
